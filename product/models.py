@@ -21,7 +21,7 @@ class Category(models.Model):
         return self.title
 
 class Product(models.Model):
-    STATUS = (
+    STATUS= (
         ('True', 'Evet'),
         ('False', 'Hayır'),
     )
