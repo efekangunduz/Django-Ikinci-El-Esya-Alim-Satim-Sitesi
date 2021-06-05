@@ -1,0 +1,116 @@
+<!--
+Navigation Bar Section
+-->
+<div class="navbar">
+    {% load static %}
+	  <div class="navbar-inner">
+		<div class="container">
+		  <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </a>
+		  <div class="nav-collapse">
+			<ul class="nav">
+			  <li class="active"><a href="index.html">Home	</a></li>
+			  <li class=""><a href="{% static 'list-view.html' %}">List View</a></li>
+			  <li class=""><a href="{% static 'grid-view.html' %}">Grid View</a></li>
+			  <li class=""><a href="{% static 'three-col.html' %}">Three Column</a></li>
+			  <li class=""><a href="{% static 'four-col.html' %}">Four Column</a></li>
+			  <li class=""><a href="{% static 'general.html' %}">General Content</a></li>
+			</ul>
+			<form action="#" class="navbar-search pull-left">
+			  <input type="text" placeholder="Search" class="search-query span2">
+			</form>
+			<ul class="nav pull-right">
+			<li class="dropdown">
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<div class="dropdown-menu">
+				<form class="form-horizontal loginFrm">
+				  <div class="control-group">
+					<input type="text" class="span2" id="inputEmail" placeholder="Email">
+				  </div>
+				  <div class="control-group">
+					<input type="password" class="span2" id="inputPassword" placeholder="Password">
+				  </div>
+				  <div class="control-group">
+					<label class="checkbox">
+					<input type="checkbox"> Remember me
+					</label>
+					<button type="submit" class="shopBtn btn-block">Sign in</button>
+				  </div>
+				</form>
+				</div>
+			</li>
+			</ul>
+		  </div>
+		</div>
+	  </div>
+	</div>
+<!--
+Body Section
+-->
+	<div class="row">
+<div id="sidebar" class="span3">
+<div class="well well-small">
+	<ul class="nav nav-list">
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fashion</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Watches</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Loose Beads</a></li>
+		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
+		<li style="border:0"> &nbsp;</li>
+		<li> <a class="totalInCart" href="{% static 'cart.html' %}"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+	</ul>
+</div>
+
+			  <div class="well well-small alert alert-warning cntr">
+				  <h2>50% Discount</h2>
+				  <p>
+					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+				  </p>
+			  </div>
+
+			  <div class="well well-small" ><a href="#"><img src="{% static 'assets/img/paypal.jpg' %}" alt="payment method paypal"></a></div>
+
+			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+			<br>
+			<br>
+			<ul class="nav nav-list promowrapper">
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="{% static 'assets/img/bootstrap-ecommerce-templates.png' %}" alt="bootstrap ecommerce templates">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="{% static 'assets/img/shopping-cart-template.png' %}" alt="shopping cart template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+			<li style="border:0"> &nbsp;</li>
+			<li>
+			  <div class="thumbnail">
+				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="{% static 'assets/img/bootstrap-template.png' %}" alt="bootstrap template">
+				<div class="caption">
+				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				</div>
+			  </div>
+			</li>
+		  </ul>
+
+	</div>
