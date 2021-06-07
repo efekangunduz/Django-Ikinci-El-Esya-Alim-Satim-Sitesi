@@ -1,14 +1,18 @@
 {%  extends "homebase.html" %}
 
 {% block title %}
-Index Sayfası
+    {{setting.title}}
 {% endblock %}
 
 {% block keywords %}
-Anahtar Kelimeler
+{{ setting.keywords}}
 {% endblock %}
 {% block description %}
-Açıklama
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
 {% endblock %}
 
 {% block sidebar %}
