@@ -1,0 +1,53 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Hakkımızda-{{setting.company}}
+{% endblock %}
+
+{% block keywords %}
+{{ setting.keywords}}
+{% endblock %}
+{% block description %}
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">Hakkımızda</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span8">
+		  <h6>
+			Hakkımızda
+		  </h6>
+		  <p>
+              {{ setting.aboutus|safe }}
+		  </p>
+		</div>
+		<div class="span4">
+            <p>
+                <b>Çalışma Saatleri</b>
+            </p>
+			Monday - Friday<br/>
+			09:00am - 09:00pm<br/>
+			Saturday<br/>
+			09:00am - 07:00pm<br/>
+			Sunday<br/>
+			12:30pm - 06:00pm<br/>
+		</div>
+	</div>
+
+
+
+{% endblock %}
