@@ -27,24 +27,26 @@
 	</div>
 	<hr class="soften">
 	<div class="row">
-		<div class="span8">
-		  <h6>
-			İletişim
-		  </h6>
+		<div class="span6">
 		  <p>
               {{ setting.contactus|safe }}
 		  </p>
 		</div>
-		<div class="span4">
-            <p>
-                <b>Çalışma Saatleri</b>
-            </p>
-			Monday - Friday<br/>
-			09:00am - 09:00pm<br/>
-			Saturday<br/>
-			09:00am - 07:00pm<br/>
-			Sunday<br/>
-			12:30pm - 06:00pm<br/>
+		<div class="span6">
+        <h2>İletişim Formu</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+	<form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="FORMU GÖNDER">
+    </form>
 		</div>
 	</div>
 
