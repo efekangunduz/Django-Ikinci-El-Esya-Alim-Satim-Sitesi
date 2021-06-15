@@ -2,33 +2,22 @@
 	<div class="well np">
 		<div id="myCarousel" class="carousel slide homCar">
             <div class="carousel-inner">
+                {% for rs in sliderdata %}
 			  <div class="item">
                   {%  load static %}
-                <img style="width:100%" src="{% static 'assets/img/bootstrap_free-ecommerce.png' %}" alt="bootstrap ecommerce templates">
+                <img style="width:100%" src="{{ rs.image.url }}" alt="bootstrap ecommerce templates">
                 <div class="carousel-caption">
-                      <h4>Bootstrap shopping cart</h4>
-                      <p><span>Very clean simple to use</span></p>
+                      <h4>{{ rs.title }}</h4>
+                      <p><span>{{ rs.price}}TL</span></p>
+                    <a href="/product/{{ rs.id }}/{{ rs.slug }}" class="btn-primary">Satın Al</a>
                 </div>
               </div>
-			  <div class="item">
-                <img style="width:100%" src="{% static 'assets/img/carousel1.png' %}" alt="bootstrap ecommerce templates">
-                <div class="carousel-caption">
-                      <h4>Bootstrap Ecommerce template</h4>
-                      <p><span>Highly Google seo friendly</span></p>
-                </div>
-              </div>
+                {% endfor %}
 			  <div class="item active">
-                <img style="width:100%" src="{% static 'assets/img/carousel3.png' %}" alt="bootstrap ecommerce templates">
+                <img style="width:100%" src="{% static 'assets/img/toshiba-laptop.png' %}" alt="bootstrap ecommerce templates">
                 <div class="carousel-caption">
-                      <h4>Twitter Bootstrap cart</h4>
-                      <p><span>Very easy to integrate and expand.</span></p>
-                </div>
-              </div>
-              <div class="item">
-                <img style="width:100%" src="{% static 'assets/img/bootstrap-templates.png' %}" alt="bootstrap templates">
-                <div class="carousel-caption">
-                      <h4>Bootstrap templates integration</h4>
-                      <p><span>Compitable to many more opensource cart</span></p>
+                      <h4>Toshiba Laptop</h4>
+                      <p><span>6000.0TL</span></p>
                 </div>
               </div>
             </div>
