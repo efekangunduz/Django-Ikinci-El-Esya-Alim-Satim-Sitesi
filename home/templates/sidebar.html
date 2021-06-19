@@ -2,23 +2,50 @@
 <!--
 Body Section
 -->
-	<div class="row">
-        {% load static %}
+
+
+<div class="row">
+    {% load static %}
 <div id="sidebar" class="span3">
 <div class="well well-small">
 	<ul class="nav nav-list">
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fashion</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Watches</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fine Jewelry</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Fashion Jewelry</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Engagement & Wedding</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Men's Jewelry</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Vintage & Antique</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Loose Diamonds </a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>Loose Beads</a></li>
-		<li><a href="{% static 'products.html' %}"><span class="icon-chevron-right"></span>See All Jewelry & Watches</a></li>
-		<li style="border:0"> &nbsp;</li>
-		<li> <a class="totalInCart" href="{% static 'cart.html' %}"><strong>Total Amount  <span class="badge badge-warning pull-right" style="line-height:18px;">$448.42</span></strong></a></li>
+        <!-- test -->
+        <li>
+            <ul class="nav pull">
+                {% load mptt_tags %}
+                    {% recursetree category %}
+                        <li class="dropdown">
+                            <a href="/category/{{ node.slug }}" {% if not node.is_leaf_node %}data-toggle="dropdown" class="dropdown"{% endif %}>{% if not node.is_leaf_node %}<span class="icon-chevron-right"></span> {% endif %}{{ node.title }} <b class="caret"></b></a>
+                            <div class="dropdown-menu">
+                            <ul class="nav pull">
+                            {% if not node.is_leaf_node %}
+                                <li class="children">
+                                  <a href="/category/{{ node.slug }}"> {{ children }}</a>
+                                </li>
+                            {% endif %}
+
+                            </ul>
+                            </div>
+                        </li>
+                    {% endrecursetree %}
+            <!-- SIDEBARDAKI DONGUNUN NASIL OLACAGI
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown" href="#"><span class="icon-chevron-right"></span> Moda <b class="caret"></b></a>
+                    <div class="dropdown-menu">
+                        <ul class="nav pull">
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown" href="#"><span class="icon-chevron-right"></span>Kazak2<b class="caret"></b> </a>
+                            </li>
+                            <li class="dropdown">
+                                <a data-toggle="dropdown" class="dropdown" href="#"><span class="icon-chevron-right"></span>Pantolon<b class="caret"></b> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+-->
+            </ul>
+        </li>
+        <!-- test -->
 	</ul>
 </div>
 
