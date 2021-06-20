@@ -31,7 +31,7 @@ def referanslar(request):
 
 
 def iletisim(request):
-    if request.method == 'POST' :
+    if request.method == 'POST':
         form = ContactFormu(request.POST)
         if form.is_valid():
             data = ContactFormMessage()
@@ -48,3 +48,14 @@ def iletisim(request):
     form = ContactFormu()
     context = {'setting': setting, 'form': form}
     return render(request, 'iletisim.html', context)
+
+
+def category_products(request,id,slug):
+    category = Category.objects.all()
+    categorydata = Category.objects.get(pk=id)
+    products = Product.objects.filter(category_id=id)
+    context = {'products': products,
+               'category': category,
+               'categorydata': categorydata,
+               }
+    return render(request, 'products.html', context)

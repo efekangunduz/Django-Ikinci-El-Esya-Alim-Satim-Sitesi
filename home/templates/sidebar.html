@@ -15,7 +15,7 @@ Body Section
                 {% load mptt_tags %}
                     {% recursetree category %}
                         <li class="dropdown">
-                            <a href="/category/{{ node.slug }}" {% if not node.is_leaf_node %}data-toggle="dropdown" class="dropdown"{% endif %}>{% if not node.is_leaf_node %}<span class="icon-chevron-right"></span> {% endif %}{{ node.title }} <b class="caret"></b></a>
+                            <a href="/category/{{ node.id }}/{{ node.slug }}" {% if not node.is_leaf_node %}data-toggle="dropdown" class="dropdown"{% endif %}>{% if not node.is_leaf_node %}<span class="icon-chevron-right"></span> {% endif %}{{ node.title }} <b class="caret"></b></a>
                             <div class="dropdown-menu">
                             <ul class="nav pull">
                             {% if not node.is_leaf_node %}

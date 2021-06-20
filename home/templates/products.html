@@ -1,0 +1,69 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    {{ categorydata.title }} Ürünleri
+{% endblock %}
+
+{% block keywords %}
+{{ categorydata.keywords}}
+{% endblock %}
+{% block description %}
+{{ categorydata.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+
+
+
+{% block content %}
+	<div class="row">
+    	<div class="row">
+	<div class="span9">
+
+	<!--
+New Products
+-->
+	<div class="well well-small">
+                <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">{{ categorydata.title }}</li>
+        </ul>
+    <h3>{{ categorydata.title }} Ürünleri</h3>
+		<div class="row-fluid">
+		  <ul class="thumbnails">
+              {% for rs in products %}
+			<li class="span4">
+			  <div class="thumbnail">
+				<a href="/product/{{ rs.id }}/{{ rs.title }}" class="overlay"></a>
+				<a class="zoomTool" href="/product/{{ rs.id }}/{{ rs.title }}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a href="/product/{{ rs.id }}/{{ rs.title }}"><img src="{{ rs.image.url}}" alt=""></a>
+				<div class="caption cntr">
+					<p>{{ rs.title}}</p>
+					<p><strong> ${{ rs.price }}</strong></p>
+					<h4><a class="shopBtn" href="#" title="add to cart"> Sepete Ekle </a></h4>
+					<div class="actionList">
+						<a class="pull-left" href="#"> İstek Listesine Ekle </a>
+						<a class="pull-left" href="#"> Kıyaslamaya Ekle </a>
+					</div>
+					<br class="clr">
+				</div>
+			  </div>
+			</li>
+                  {% endfor %}
+		  </ul>
+		</div>
+
+	</div>
+	</div>
+	</div>
+    </div>
+
+
+
+{% endblock %}
