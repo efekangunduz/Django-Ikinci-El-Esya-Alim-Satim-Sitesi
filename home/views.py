@@ -1,10 +1,10 @@
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
 from home.models import Setting, ContactFormu, ContactFormMessage
-from product.models import Product, Category
+from product.models import Product, Category, Images
 
 
 def index(request):
@@ -57,7 +57,7 @@ def iletisim(request):
     return render(request, 'iletisim.html', context)
 
 
-def category_products(request,id,slug):
+def category_products(request, id, slug):
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
     products = Product.objects.filter(category_id=id)
@@ -66,3 +66,14 @@ def category_products(request,id,slug):
                'categorydata': categorydata,
                }
     return render(request, 'products.html', context)
+
+
+def product_detail(request, id, slug):
+    category = Category.objects.all()
+    product = Product.objects.get(pk=id)
+    images = Images.objects.filter(product_id=id)
+    context = {'product': product,
+               'category': category,
+               'images': images,
+               }
+    return render(request, 'product_detail.html', context)
