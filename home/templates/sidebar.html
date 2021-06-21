@@ -50,47 +50,29 @@ Body Section
 </div>
 
 			  <div class="well well-small alert alert-warning cntr">
-				  <h2>50% Discount</h2>
+				  <h2>50% İndirim</h2>
 				  <p>
-					 only valid for online order. <br><br><a class="defaultBtn" href="#">Click here </a>
+					 Sadece online siparişler için geçerli. <br><br><a class="defaultBtn" href="#">Buraya Tıklayınız </a>
 				  </p>
 			  </div>
 
 			  <div class="well well-small" ><a href="#"><img src="{% static 'assets/img/paypal.jpg' %}" alt="payment method paypal"></a></div>
 
-			<a class="shopBtn btn-block" href="#">Upcoming products <br><small>Click to view</small></a>
+			<a class="shopBtn btn-block" href="#">Gelecek Ürünler <br><small>Görmek İçin Tıklayınız</small></a>
 			<br>
 			<br>
 			<ul class="nav nav-list promowrapper">
 			<li>
+                {% for rs in dayproducts %}
 			  <div class="thumbnail">
-				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="{% static 'assets/img/bootstrap-ecommerce-templates.png' %}" alt="bootstrap ecommerce templates">
+				<a class="zoomTool" href="/product/{{ rs.id }}/{{ rs.slug }}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<img src="{{ rs.image.url }}" alt="bootstrap ecommerce templates" style="height: 400px">
 				<div class="caption">
-				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
+				  <h4><a class="defaultBtn" href="/product/{{ rs.id }}/{{ rs.slug }}">İncele</a> <span class="pull-right">${{ rs.price }}</span></h4>
 				</div>
 			  </div>
 			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="{% static 'assets/img/shopping-cart-template.png' %}" alt="shopping cart template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
-			<li style="border:0"> &nbsp;</li>
-			<li>
-			  <div class="thumbnail">
-				<a class="zoomTool" href="{% static 'product_details.html' %}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<img src="{% static 'assets/img/bootstrap-template.png' %}" alt="bootstrap template">
-				<div class="caption">
-				  <h4><a class="defaultBtn" href="{% static 'product_details.html' %}">VIEW</a> <span class="pull-right">$22.00</span></h4>
-				</div>
-			  </div>
-			</li>
+                {% endfor %}
 		  </ul>
 
 	</div>
