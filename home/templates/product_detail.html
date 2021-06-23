@@ -89,15 +89,9 @@
 			</div>
 				<hr class="softn clr"/>
             <ul id="productDetail" class="nav nav-tabs">
-              <li class="active"><a href="#home" data-toggle="tab">Ürün Detayları</a></li>
-              <li class=""><a href="#profile" data-toggle="tab">Related Products </a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Acceseries <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#cat1" data-toggle="tab">Category one</a></li>
-                  <li><a href="#cat2" data-toggle="tab">Category two</a></li>
-                </ul>
-              </li>
+              <li class="activate"><a href="#home" data-toggle="tab">Ürün Detayları</a></li>
+              <li class=""><a href="#profile" data-toggle="tab">Yorumlar </a></li>
+              <li class=""><a href="#cat1" data-toggle="tab">Yorum Ekle</a></li>
             </ul>
             <div id="myTabContent" class="tab-content tabWrapper">
             <div class="tab-pane fade active in" id="home">
@@ -115,301 +109,76 @@
                 {{product.detail | safe}}
 			</div>
 			<div class="tab-pane fade" id="profile">
-			<div class="row-fluid">
-			<div class="span2">
-				<img src="assets/img/d.jpg" alt="">
-			</div>
-			<div class="span6">
-				<h5>Product Name </h5>
-				<p>
-				Nowadays the lingerie industry is one of the most successful business spheres.
-				We always stay in touch with the latest fashion tendencies -
-				that is why our goods are so popular..
-				</p>
-			</div>
-			<div class="span4 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> $140.00</h3>
-			<label class="checkbox">
-				<input type="checkbox">  Adds product to compair
-			</label><br>
-			<div class="btn-group">
-			  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-			  <a href="product_details.html" class="shopBtn">VIEW</a>
-			 </div>
-				</form>
-			</div>
-		</div>
+                {% for rs in comments %}
 			<hr class="soft">
 			<div class="row-fluid">
 			<div class="span2">
 				<img src="assets/img/d.jpg" alt="">
 			</div>
 			<div class="span6">
-				<h5>Product Name </h5>
+                <h3><pre><i class="icon-user">   {{ rs.user.first_name }}</i>   <i class="icon-time"> {{ rs.create_at }}</i> </pre></h3>
+                <hr class="well-small">
+				<h4> {{ rs.subject }} </h4>
 				<p>
-				Nowadays the lingerie industry is one of the most successful business spheres.
-				We always stay in touch with the latest fashion tendencies -
-				that is why our goods are so popular..
+                    {{ rs.comment}}
 				</p>
 			</div>
 			<div class="span4 alignR">
 			<form class="form-horizontal qtyFrm">
-			<h3> $140.00</h3>
-			<label class="checkbox">
-				<input type="checkbox">  Adds product to compair
-			</label><br>
-			<div class="btn-group">
-			  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-			  <a href="product_details.html" class="shopBtn">VIEW</a>
-			 </div>
+			<h2> Rate: {{ rs.rate }}</h2>
 				</form>
 			</div>
 	</div>
-			<hr class="soft"/>
-			<div class="row-fluid">
-			<div class="span2">
-				<img src="assets/img/d.jpg" alt="">
-			</div>
-			<div class="span6">
-				<h5>Product Name </h5>
-				<p>
-				Nowadays the lingerie industry is one of the most successful business spheres.
-				We always stay in touch with the latest fashion tendencies -
-				that is why our goods are so popular..
-				</p>
-			</div>
-			<div class="span4 alignR">
-			<form class="form-horizontal qtyFrm">
-			<h3> $140.00</h3>
-			<label class="checkbox">
-				<input type="checkbox">  Adds product to compair
-			</label><br>
-			<div class="btn-group">
-			  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-			  <a href="product_details.html" class="shopBtn">VIEW</a>
-			 </div>
-				</form>
-			</div>
-	</div>
-			<hr class="soft"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
+                {% endfor %}
 			</div>
               <div class="tab-pane fade" id="cat1">
-                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
-              <br>
-              <br>
-			  <div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/b.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
+                <div class="well">
+	<form class="form-horizontal" action="/product/addcomment/{{ product.id }}" method="post" >
+    {% csrf_token %}
+		<h3>Yorum Ekle</h3>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+		<div class="control-group">
+			<label class="control-label">Konu <sup>*</sup></label>
+			<div class="controls">
+			  <input type="text" placeholder="subject" name="subject">
 			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/a.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label">Yorum <sup>*</sup></label>
+			<div class="controls">
+			  <textarea class="input" name="comment"></textarea>
 			</div>
-			<hr class="soften"/>
-			  </div>
-              <div class="tab-pane fade" id="cat2">
+		</div>
+        <div class="control-group">
+		<label class="control-label">Puan <sup>*</sup></label>
+		<div class="controls">
+		<select class="span1" name="rate">
+			<option value="1" name="rate">1</option>
+			<option value="2" name="rate">2</option>
+			<option value="3" name="rate">3</option>
+            <option value="4" name="rate">4</option>
+            <option value="5" name="rate">5</option>
+		</select>
+		</div>
+		</div>
+        {% if user.id is not None %}
+	<div class="control-group">
+		<div class="controls">
+		 <input type="submit" name="submitAccount" value="Yorumu Ekle" class="shopBtn exclusive">
+        {% else %}
+        Yorum Eklemek için Login olunuz.
+        {% endif %}
+		</div>
+	</div>
 
-				<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-			<div class="row-fluid">
-					<div class="span2">
-						<img src="assets/img/d.jpg" alt="">
-					</div>
-					<div class="span6">
-						<h5>Product Name </h5>
-						<p>
-						Nowadays the lingerie industry is one of the most successful business spheres.
-						We always stay in touch with the latest fashion tendencies -
-						that is why our goods are so popular..
-						</p>
-					</div>
-					<div class="span4 alignR">
-					<form class="form-horizontal qtyFrm">
-					<h3> $140.00</h3>
-					<label class="checkbox">
-						<input type="checkbox">  Adds product to compair
-					</label><br>
-					<div class="btn-group">
-					  <a href="product_details.html" class="defaultBtn"><span class=" icon-shopping-cart"></span> Add to cart</a>
-					  <a href="product_details.html" class="shopBtn">VIEW</a>
-					 </div>
-						</form>
-					</div>
-			</div>
-			<hr class="soften"/>
-
-				</div>
+	</form>
+</div>
             </div>
 </div>
 </div>
