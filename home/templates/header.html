@@ -12,11 +12,36 @@
 					<a href="#"><span class="icon-youtube"></span></a>
 					<a href="#"><span class="icon-tumblr"></span></a>
 				</div>
-				<a class="active" href="/"> <span class="icon-home"></span> Home</a>
-				<a href="#"><span class="icon-user"></span> My Account</a>
-				<a href="{% static 'register.html' %}"><span class="icon-edit"></span> Free Register </a>
-				<a href="/iletisim"><span class="icon-envelope"></span> Contact us</a>
+				<a class="active" href="/"> <span class="icon-home"></span> Anasayfa</a>
+                {% if user.id is not None %}
+                    <ul class="nav pull-right">
+			            <li class="dropdown">
+				            <a data-toggle="dropdown" class="dropdown-toggle" href="/"><span class="icon-user"></span> {{ user.first_name}} <b class="caret"></b></a>
+				            <div class="dropdown-menu">
+				                <div class="control-group">
+                                <a href="/home"><span class="icon-home"></span> Anasayfa </a>
+				                </div>
+				                <div class="control-group">
+					                <a href="/profile"><span class="icon-user"></span> Profil </a>
+				                </div>
+                                <div class="control-group">
+                                <a href="#"><span class="icon-home"></span> Siparişlerim </a>
+				                </div>
+                                <div class="control-group">
+                                <a href="#"><span class="icon-home"></span> Checkout </a>
+				                </div>
+				                <div class="control-group">
+					                <a href="/logout"><span class="icon-off"></span> Logout </a>
+				                </div>
+				            </div>
+			            </li>
+			        </ul>
 				<a href="{% static 'cart.html' %}"><span class="icon-shopping-cart"></span> 2 Item(s) - <span class="badge badge-warning"> $448.42</span></a>
+                {% else %}
+				<a href="/kayitol"><span class="icon-edit"></span> Kayıt Ol </a>
+                    <a href="/login"><span class="icon-user"></span> Giriş Yap </a>
+                {% endif %}
+            <a href="/iletisim"><span class="icon-envelope"></span> İletişim</a>
 			</div>
 		</div>
 	</div>
@@ -72,25 +97,28 @@ Navigation Bar Section
 			  <input type="text" name="query" placeholder="Enter your keyword" class="search-query span2">
 			</form>
 			<ul class="nav pull-right">
+            {% if user.id is None %}
 			<li class="dropdown">
-				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Login <b class="caret"></b></a>
+				<a data-toggle="dropdown" class="dropdown-toggle" href="#"><span class="icon-lock"></span> Giriş Yap <b class="caret"></b></a>
 				<div class="dropdown-menu">
-				<form class="form-horizontal loginFrm">
+				<form class="form-horizontal loginFrm" action="" method="post">
+                    {% csrf_token %}
 				  <div class="control-group">
-					<input type="text" class="span2" id="inputEmail" placeholder="Email">
+					<input type="text" class="span2" id="inputEmail" name="username" placeholder="username">
 				  </div>
 				  <div class="control-group">
-					<input type="password" class="span2" id="inputPassword" placeholder="Password">
+					<input type="password" class="span2" id="inputPassword" name="password" placeholder="Password">
 				  </div>
 				  <div class="control-group">
 					<label class="checkbox">
-					<input type="checkbox"> Remember me
+					<input type="checkbox"> Beni Hatırla
 					</label>
-					<button type="submit" class="shopBtn btn-block">Sign in</button>
+					<button type="submit" class="shopBtn btn-block" href="/">Giriş Yap</button>
 				  </div>
 				</form>
 				</div>
 			</li>
+                {% endif %}
 			</ul>
 		  </div>
 		</div>

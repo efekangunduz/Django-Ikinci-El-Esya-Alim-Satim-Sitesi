@@ -40,9 +40,9 @@ New Products
               {% for rs in products %}
 			<li class="span4">
 			  <div class="thumbnail">
-				<a href="/product/{{ rs.id }}/{{ rs.title }}" class="overlay"></a>
-				<a class="zoomTool" href="/product/{{ rs.id }}/{{ rs.title }}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-				<a href="/product/{{ rs.id }}/{{ rs.title }}"><img src="{{ rs.image.url}}" alt=""></a>
+				<a href="/product/{{ rs.id }}/{{ rs.slug }}" class="overlay"></a>
+				<a class="zoomTool" href="/product/{{ rs.id }}/{{ rs.slug }}" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
+				<a href="/product/{{ rs.id }}/{{ rs.slug }}"><img src="{{ rs.image.url}}" alt=""></a>
 				<div class="caption cntr">
 					<p>{{ rs.title}}</p>
 					<p><strong> ${{ rs.price }}</strong></p>
