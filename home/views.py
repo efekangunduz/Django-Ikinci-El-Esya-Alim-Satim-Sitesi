@@ -4,12 +4,22 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 
 # Create your views here.
-from home.forms import SearchForm
+from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage
 from product.models import Product, Category, Images, Comment
 
 
 def index(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:4]
     category = Category.objects.all()
@@ -28,18 +38,48 @@ def index(request):
 
 
 def hakkimizda(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting}
     return render(request, 'hakkımızda.html', context)
 
 
 def referanslar(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     setting = Setting.objects.get(pk=1)
     context = {'setting': setting}
     return render(request, 'referanslarimiz.html', context)
 
 
 def iletisim(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     if request.method == 'POST':
         form = ContactFormu(request.POST)
         if form.is_valid():
@@ -60,6 +100,16 @@ def iletisim(request):
 
 
 def category_products(request, id, slug):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     category = Category.objects.all()
     categorydata = Category.objects.get(pk=id)
     products = Product.objects.filter(category_id=id)
@@ -71,6 +121,16 @@ def category_products(request, id, slug):
 
 
 def product_detail(request, id, slug):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect('/')
+        else:
+            messages.warning(request, "Giriş Yapılamadı.")
+            return HttpResponseRedirect('/login')
     category = Category.objects.all()
     product = Product.objects.get(pk=id)
     images = Images.objects.filter(product_id=id)
@@ -119,3 +179,22 @@ def login_view(request):
     context = {'category': category,
                }
     return render(request, 'login.html', context)
+
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = request.POST['username']
+            password = request.POST['password1']
+            user = authenticate(request, username=username, password=password)
+            login(request, user)
+            return HttpResponseRedirect('/')
+
+    form = SignUpForm()
+    category = Category.objects.all()
+    context = {'category': category,
+               'form': form,
+               }
+    return render(request, 'signup.html', context)
