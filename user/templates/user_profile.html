@@ -1,0 +1,84 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    {{profile.user_name}}-Profili
+{% endblock %}
+
+{% block keywords %}
+{{ setting.keywords}}
+{% endblock %}
+{% block description %}
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">User Profile</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span4">
+            {% include "user_panel.html" %}
+		</div>
+		<div class="span8">
+            <h2>Bilgileri</h2>
+            <div class="well well-small">
+        <table class="table table-bordered">
+              <thead>
+                <tr>
+                    <img src="{{ profile.image.url }}" alt="">
+                </tr>
+                <tr>
+                    <th>Name Surname</th>
+                    <td>{{ profile.user.first_name }} {{ profile.user.last_name }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ profile.user.email }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ profile.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td>{{ profile.address }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ profile.city }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ profile.country }}</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+
+
+
+
+
+
+
+
+              </tbody>
+            </table>
+            </div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
