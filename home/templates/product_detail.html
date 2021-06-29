@@ -31,6 +31,13 @@
             <li><a href="/category/{{ product.category_id }}/{{ product.category.slug }}">{{product.category}}</a> <span class="divider">/</span></li>
 		    <li class="active">{{product.title}} Detayları</li>
         </ul>
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
 	<div class="well well-small">
 	<div class="row-fluid">
 			<div class="span5">
@@ -52,33 +59,12 @@
 			<div class="span7">
 				<h3>{{ product.title }} [${{ product.price }}]</h3>
 				<hr class="soft"/>
-				<form class="form-horizontal qtyFrm">
+				<form class="form-horizontal qtyFrm" action="/order/addtocart/{{ product.id }}" method="post">
+                    {% csrf_token %}
 				  <div class="control-group">
 					<label class="control-label"><span>${{ product.price }}</span></label>
 					<div class="controls">
-					<input type="number" min="0" max="{{ product.amount }}" value="1" class="span6" placeholder="Qty.">
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label"><span>Color</span></label>
-					<div class="controls">
-					  <select class="span11">
-						  <option>Red</option>
-						  <option>Purple</option>
-						  <option>Pink</option>
-						  <option>Red</option>
-						</select>
-					</div>
-				  </div>
-				  <div class="control-group">
-					<label class="control-label"><span>Materials</span></label>
-					<div class="controls">
-					  <select class="span11">
-						  <option>Material 1</option>
-						  <option>Material 2</option>
-						  <option>Material 3</option>
-						  <option>Material 4</option>
-						</select>
+					<input type="number" name="quantity" min="0" max="{{ product.amount }}" value="1" class="span6" placeholder="Qty.">
 					</div>
 				  </div>
 				  <h4>Stokta {{ product.amount}} adet ürün kaldı.</h4>

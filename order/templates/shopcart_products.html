@@ -1,0 +1,79 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Shop Cart
+{% endblock %}
+
+{% block keywords %}
+{{ categorydata.keywords}}
+{% endblock %}
+{% block description %}
+{{ categorydata.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">Shop Cart</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+	<div class="well well-small">
+		<h1>Check Out </h1>
+	<hr class="soften"/>
+
+	<table class="table table-bordered table-condensed">
+              <thead>
+                <tr>
+                  <th>Ürün</th>
+                  <th></th>
+                  <th>Fiyat</th>
+				  <th>Adet</th>
+                  <th>Toplam</th>
+                  <th></th>
+				</tr>
+              </thead>
+              <tbody>
+              {% for rs in schopcart %}
+                <tr>
+                  <td><img width="100" src="{{ rs.product.image.url}}" alt=""></td>
+                  <td>{{ rs.product }}</td>
+                  <td>${{ rs.product.price }}</td>
+                  <td>{{rs.quantity}}</td>
+                  <td>{{rs.amount}}</td>
+                  <td>
+					<input class="span1" style="max-width:34px" placeholder="1" id="appendedInputButtons" size="16" type="text" value="2">
+				  <div class="input-append">
+					<a href="/order/deletefromcart/{{ rs.id }}" onclick="return confirm('Silmek istediğinize emin misiniz?')"> <button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button></a>
+				</div>
+				</td>
+                  <td>$100.00</td>
+                </tr>
+              {% endfor %}
+                <tr>
+                  <td colspan="6" class="alignR">Total products:	</td>
+                  <td class="label label-primary"> ${{ total }}</td>
+                </tr>
+				</tbody>
+            </table><br/>
+
+
+
+	<a href="products.html" class="shopBtn btn-large"><span class="icon-arrow-left"></span> Continue Shopping </a>
+	<a href="login.html" class="shopBtn btn-large pull-right">Next <span class="icon-arrow-right"></span></a>
+
+</div>
+</div>
+
+
+
+{% endblock %}
