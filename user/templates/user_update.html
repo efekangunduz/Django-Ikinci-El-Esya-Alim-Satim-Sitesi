@@ -1,0 +1,52 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    {{profile.user_name}}-Profil Güncelleme
+{% endblock %}
+
+{% block keywords %}
+{{ setting.keywords}}
+{% endblock %}
+{% block description %}
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">User Profil Güncelleme</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span4">
+            {% include "user_panel.html" %}
+		</div>
+		<div class="span8">
+            <h2>Bilgileri Güncelleme</h2>
+            <div class="well well-small">
+                <form method="POST" enctype = "multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ user_form.as_p  }}
+                            {{ profile_form.as_p  }}
+                        </fieldset>
+                        <div class="form-group">
+                            <button class="primary-btn" type="submit">Update</button>
+                        </div>
+                    </form>
+            </div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
