@@ -6,6 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from home.forms import SearchForm, SignUpForm
 from home.models import Setting, ContactFormu, ContactFormMessage, UserProfile
+from order.models import ShopCart
 from product.models import Product, Category, Images, Comment
 
 
@@ -20,12 +21,14 @@ def index(request):
         else:
             messages.warning(request, "Giriş Yapılamadı.")
             return HttpResponseRedirect('/login')
+    current_user = request.user
     setting = Setting.objects.get(pk=1)
     sliderdata = Product.objects.all()[:4]
     category = Category.objects.all()
     dayproducts = Product.objects.all()[:3]
     lastproducts = Product.objects.all().order_by('-id')[:3]
     randomproducts = Product.objects.all().order_by('?')[:3]
+    request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()  # shopcartta ürün saydırma
 
     context = {'setting': setting,
                'category': category,

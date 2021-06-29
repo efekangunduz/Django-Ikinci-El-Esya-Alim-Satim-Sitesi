@@ -35,7 +35,7 @@ def addtocart(request, id):
                 data.product_id = id
                 data.quantity = form.cleaned_data['quantity']
                 data.save()
-
+            request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count() #shopcartta ürün saydırma
             messages.success(request, "Ürün başarı ile sepete eklendi. ")
             return HttpResponseRedirect(url)
 
@@ -50,7 +50,7 @@ def addtocart(request, id):
             data.product_id = id
             data.quantity = 1
             data.save()
-
+        request.session['cart_items'] = ShopCart.objects.filter(user_id=current_user.id).count()  # shopcartta ürün saydırma
         messages.success(request, "Ürün başarı ile sepete eklendi. ")
         return HttpResponseRedirect(url)
 
