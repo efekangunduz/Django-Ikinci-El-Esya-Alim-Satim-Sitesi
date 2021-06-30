@@ -25,10 +25,13 @@
 					                <a href="/user"><span class="icon-user"></span> Profil </a>
 				                </div>
                                 <div class="control-group">
-                                <a href="#"><span class="icon-home"></span> Siparişlerim </a>
+                                <a href="/order"><span class="icon-barcode"></span> Siparişlerim </a>
 				                </div>
                                 <div class="control-group">
-                                <a href="#"><span class="icon-home"></span> Checkout </a>
+					                <a href="/user/comments"><span class="icon-comment"></span> Yorumlarım </a>
+				                </div>
+                                <div class="control-group">
+                                <a href="/order/orderproduct"><span class="icon-check"></span> Checkout </a>
 				                </div>
 				                <div class="control-group">
 					                <a href="/logout"><span class="icon-off"></span> Logout </a>
@@ -123,7 +126,7 @@ Navigation Bar Section
 		  </div>
 		</div>
 	  </div>
-{% if messages %}
+        {% if messages %}
             {% for message in messages %}
                 <div class="alert alert-{{ message.tags }}" role="alert">
                     {{ message|safe }}

@@ -1,0 +1,68 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Yorumlar
+{% endblock %}
+
+{% block keywords %}
+{{ setting.keywords}}
+{% endblock %}
+{% block description %}
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">User Yorumları</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span4">
+            {% include "user_panel.html" %}
+		</div>
+		<div class="span8">
+            <h2>Yorumları</h2>
+            <div class="well well-small">
+        <table class="table table-bordered">
+              <thead>
+              <tr>
+                  <th>Ürün</th>
+                  <th>Rate</th>
+                  <th>Konu</th>
+                  <th>Yorum</th>
+                  <th>Status</th>
+                  <th>Tarih</th>
+                  <th>Detay</th>
+              </tr>
+              {% for rs in comments %}
+              <tr>
+                  <td><a href="/product/{{ rs.product_id }}/{{ rs.product.slug }}">{{ rs.product.title }}</a></td>
+                  <td>{{ rs.rate }}</td>
+                  <td>{{ rs.subject }}</td>
+                  <td>{{ rs.comment }}</td>
+                  <td>{{ rs.status }}</td>
+                  <td>{{ rs.create_at }}</td>
+                  <td><a href="/user/deletecomment/{{ rs.id }}" onclick="return confirm('Silmek istediğinize emin misiniz?')"> <button class="btn btn-mini btn-danger" type="button"><span class="icon-remove"></span></button></a></td>
+              </tr>
+              {% endfor %}
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            </div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
