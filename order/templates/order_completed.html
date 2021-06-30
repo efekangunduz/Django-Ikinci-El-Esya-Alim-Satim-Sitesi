@@ -1,0 +1,41 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Sipariş
+{% endblock %}
+
+{% block keywords %}
+{{ categorydata.keywords}}
+{% endblock %}
+{% block description %}
+{{ categorydata.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">Sipariş</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div  class="row">
+        Sevgili {{ user.first_name }} {{ user.last_name }}<br>
+        Siparişiniz tamamlandı.<br>
+        Sipariş Kodunuz: {{ ordercode }}<br>
+        Yine bekleriz.
+
+
+
+    </div>
+
+
+
+{% endblock %}

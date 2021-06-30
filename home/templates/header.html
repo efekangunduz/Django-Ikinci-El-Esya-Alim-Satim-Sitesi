@@ -36,7 +36,7 @@
 				            </div>
 			            </li>
 			        </ul>
-				<a href="{% static 'cart.html' %}"><span class="icon-shopping-cart"></span> {{ request.session.cart_items }} Ürün - <span class="badge badge-warning"> ${{ total }}</span></a>
+				<a href="/shopcart/"><span class="icon-shopping-cart"></span> {{ request.session.cart_items }} Ürün - <span class="badge badge-warning"> ${{ total }}</span></a>
                 {% else %}
 				<a href="/signup"><span class="icon-edit"></span> Kayıt Ol </a>
                     <a href="/login"><span class="icon-user"></span> Giriş Yap </a>
