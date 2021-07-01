@@ -1,0 +1,67 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Sipariş Listesi
+{% endblock %}
+
+{% block keywords %}
+{{ setting.keywords}}
+{% endblock %}
+{% block description %}
+{{ setting.description }}
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">Sipariş Listesi</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+		<div class="span4">
+            {% include "user_panel.html" %}
+		</div>
+		<div class="span8">
+            <h2>Üye Sipariş Listesi</h2>
+            <div class="well well-small">
+        <table class="table table-bordered">
+              <thead>
+              <tr>
+                  <th class="text-left">Id</th>
+                  <th class="text-left">Adı</th>
+                  <th class="text-left">Soyadı</th>
+                  <th class="text-left">Total</th>
+                  <th class="text-left">Status</th>
+                  <th class="text-left">Date</th>
+              </tr>
+              {% for rs in orders %}
+              <tr>
+                        <td class="text-left">{{ rs.id }}</td>
+                        <td class="text-left">{{ rs.first_name }}</td>
+                        <td class="text-left">{{ rs.last_name }}</td>
+                        <td class="text-left">{{ rs.total }}</td>
+                        <td class="text-left">{{ rs.status }}</td>
+                        <td class="text-left">{{ rs.create_at }}</td>
+                        <td class="text-left"><a class="shopBtn btn-large" href="/user/orderdetail/{{ rs.id }}">Detaylar</a> </td>
+              </tr>
+              {% endfor %}
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+            </div>
+		</div>
+	</div>
+
+
+
+{% endblock %}
