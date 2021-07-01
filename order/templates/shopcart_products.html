@@ -46,7 +46,7 @@
               {% for rs in schopcart %}
                 <tr>
                   <td><img width="100" src="{{ rs.product.image.url}}" alt=""></td>
-                  <td>{{ rs.product }}</td>
+                  <td><a href="/product/{{ rs.product.id }}/{{ rs.product.slug }}"> {{ rs.product.title }}</a></td>
                   <td>${{ rs.product.price }}</td>
                   <td>{{rs.quantity}}</td>
                   <td>{{rs.amount}}</td>

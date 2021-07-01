@@ -74,16 +74,6 @@ def referanslar(request):
 
 def iletisim(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return HttpResponseRedirect('/')
-        else:
-            messages.warning(request, "Giriş Yapılamadı.")
-            return HttpResponseRedirect('/login')
-    if request.method == 'POST':
         form = ContactFormu(request.POST)
         if form.is_valid():
             data = ContactFormMessage()
