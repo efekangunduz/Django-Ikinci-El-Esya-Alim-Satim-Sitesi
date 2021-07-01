@@ -38,7 +38,8 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout_view'),
     path('login/', views.login_view, name='login_view'),
     path('signup/', views.signup_view, name='signup_view'),
-    path('shopcart/', orderviews.shopcart, name='shopcart')
+    path('shopcart/', orderviews.shopcart, name='shopcart'),
+    path('sss/', views.faq, name='faq'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

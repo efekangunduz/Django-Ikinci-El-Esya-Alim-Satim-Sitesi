@@ -1,0 +1,44 @@
+{%  extends "homebase.html" %}
+
+{% block title %}
+    Sıkça Sorulan Sorular
+{% endblock %}
+
+{% block keywords %}
+
+{% endblock %}
+{% block description %}
+
+{% endblock %}
+
+{% block head %}
+    <link rel="shortcut icon" href="{{ setting.icon.url }}">
+{% endblock %}
+
+
+
+{% block content %}
+	<hr class="soften">
+	<div>
+        <ul class="breadcrumb">
+		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
+		    <li class="active">Sıkça Sorulan Sorular</li>
+        </ul>
+	</div>
+	<hr class="soften">
+	<div class="row">
+    <table cellpadding="3" width="1200">
+        {% for rs in faq %}
+        <tr>
+            <th>{{ rs.question }}</th>
+        </tr>
+        <tr>
+            <td>{{ rs.answer}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+	</div>
+
+
+
+{% endblock %}

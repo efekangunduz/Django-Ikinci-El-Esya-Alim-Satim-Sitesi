@@ -92,10 +92,9 @@ Navigation Bar Section
 			  <li class=""><a href="/hakkimizda">Hakkımızda</a></li>
 			  <li class=""><a href="/referanslar">Referanslar</a></li>
 			  <li class=""><a href="/iletisim">İletişim</a></li>
-			  <li class=""><a href="{% static 'four-col.html' %}">Four Column</a></li>
-			  <li class=""><a href="{% static 'general.html' %}">General Content</a></li>
+			  <li class=""><a href="/sss">FAQ</a></li>
 			</ul>
-			<form action="/search/" class="navbar-search pull-left" method="post">
+			<form action="/search/" class="navbar-search pull-right" method="post">
                 {% csrf_token %}
 			  <input type="text" name="query" placeholder="Enter your keyword" class="search-query span2">
 			</form>
