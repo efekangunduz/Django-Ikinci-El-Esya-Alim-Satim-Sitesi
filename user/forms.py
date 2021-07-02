@@ -1,3 +1,7 @@
+from ckeditor.fields import RichTextFormField
+from ckeditor.fields import RichTextField
+from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import User
@@ -6,6 +10,7 @@ from django.forms import TextInput, EmailInput, Select, FileInput
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
+import product
 from home.models import UserProfile
 from product.models import Product, Images
 
@@ -43,6 +48,7 @@ class ProfileUpdateForm(forms.ModelForm):
 
 
 class ProductForm(forms.ModelForm):
+    detail = forms.CharField(widget=CKEditorUploadingWidget())
     class Meta:
         model = Product
         fields = (
@@ -57,7 +63,6 @@ class ProductForm(forms.ModelForm):
             'description': TextInput(attrs={'class': 'input', 'name': 'description', 'placeholder': 'description'}),
             'price': TextInput(attrs={'class': 'input', 'name': 'price', 'placeholder': 'price'}),
             'amount': TextInput(attrs={'class': 'input', 'name': 'amount', 'placeholder': 'amount'}),
-            'detail': TextInput(attrs={'class': 'input', 'name': 'detail', 'placeholder': 'detail'}),
             'slug': TextInput(attrs={'class': 'input', 'name': 'slug', 'placeholder': 'slug'}),
             'status': Select(attrs={'class': 'input', 'name': 'status', 'placeholder': 'status'}),
         }
