@@ -1,7 +1,7 @@
 {%  extends "homebase.html" %}
 
 {% block title %}
-    {{profile.user_name}}-Profil Güncelleme
+    Ürün Ekleme
 {% endblock %}
 
 {% block keywords %}
@@ -22,7 +22,7 @@
 	<div>
         <ul class="breadcrumb">
 		    <li><a href="/">Anasayfa</a> <span class="divider">/</span></li>
-		    <li class="active">User Profil Güncelleme</li>
+		    <li class="active">User Yorumları</li>
         </ul>
 	</div>
 	<hr class="soften">
@@ -31,16 +31,15 @@
             {% include "user_panel.html" %}
 		</div>
 		<div class="span8">
-            <h2>Bilgileri Güncelleme</h2>
+            <h2>Ürün Ekleme</h2>
             <div class="well well-small">
-                <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <fieldset class="form-group">
-                            {{ user_form.as_p  }}
-                            {{ profile_form.as_p  }}
+                            {{ product_form.as_p  }}
                         </fieldset>
                         <div class="form-group">
-                            <button class="primary-btn" type="submit">Update</button>
+                            <button class="primary-btn" type="submit">Ekle</button>
                         </div>
                     </form>
             </div>

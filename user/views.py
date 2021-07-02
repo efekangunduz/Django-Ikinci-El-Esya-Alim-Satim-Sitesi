@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-
+from django.urls import reverse
 # Create your views here.
 from home.models import UserProfile
 from order.models import Order, OrderProduct
-from product.models import Category, Comment
-from user.forms import UserUpdateForm, ProfileUpdateForm
+from product.models import Category, Comment, Product
+from user.forms import UserUpdateForm, ProfileUpdateForm, ProductForm
 
 
 def index(request):
@@ -96,7 +96,7 @@ def orders(request):
 
 
 @login_required(login_url='/login')
-def orderdetail(request,id):
+def orderdetail(request, id):
     category = Category.objects.all()
     current_user = request.user
     order = Order.objects.get(user_id=current_user.id, id=id)
@@ -107,3 +107,44 @@ def orderdetail(request,id):
         'orderitems': orderitems,
     }
     return render(request, 'user_order_detail.html', context)
+
+
+@login_required(login_url='/login')
+def addproduct(request):
+    product_form = ProductForm(request.POST, request.FILES)
+    if request.method == 'POST':
+        if product_form.is_valid():
+            product_form.save()
+            messages.success(request, 'Your product added!')
+            return HttpResponseRedirect('/user/addproduct')
+    else:
+        category = Category.objects.all()
+        product = Product.objects.all()
+        context = {
+            'category': category,
+            'product_form': product_form,
+            'product': product,
+        }
+        return render(request, 'user_addproduct.html', context)
+
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'slug': self.slug})
+
+
+def products(request):
+    category = Category.objects.all()
+    current_user = request.user
+    products = Product.objects.filter(ekleyen_id=current_user.id)
+    context = {
+        'category': category,
+        'comments': comments,
+        'products': products,
+    }
+    return render(request, 'user_products.html', context)
+
+
+def deleteproduct(request,id):
+    current_user = request.user
+    Product.objects.filter(id=id, ekleyen_id=current_user.id).delete()
+    messages.success(request, 'Ürün başarı ile silindi.')
+    return HttpResponseRedirect('/user/products')
